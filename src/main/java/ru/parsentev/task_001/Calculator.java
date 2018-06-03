@@ -53,6 +53,7 @@ public final class Calculator {
      * Операция деления.
      * @param first - первый операнд
      * @param second - второй операнд
+     * @throws IllegalStateException - если second = 0
      */
     public void divide(final double first, final double second) {
         if (second == 0) {

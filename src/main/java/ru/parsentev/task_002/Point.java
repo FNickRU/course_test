@@ -33,6 +33,10 @@ public final class Point {
      * @return расстояние между точками
      */
     public double distanceTo(final Point point) {
-        return sqrt((point.x - x) * (point.x - x) + (point.y - y) * (point.y - y));
+        double result;
+
+        result = sqrt((point.x - x) * (point.x - x) + (point.y - y) * (point.y - y));
+
+        return result;
     }
 }

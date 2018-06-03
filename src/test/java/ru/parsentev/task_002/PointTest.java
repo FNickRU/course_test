@@ -1,6 +1,6 @@
 package ru.parsentev.task_002;
 
-import static org.hamcrest.core.Is.is;
+import static org.hamcrest.Matchers.closeTo;
 import static org.junit.Assert.assertThat;
 
 import org.junit.Test;
@@ -19,6 +19,6 @@ public class PointTest {
         final Point first = new Point(0, 0);
         final Point second = new Point(0, 1);
         double result = first.distanceTo(second);
-        assertThat(result, is(1d));
+        assertThat(result, closeTo(1d, 0.0005d));
     }
 }
