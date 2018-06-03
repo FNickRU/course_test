@@ -3,8 +3,10 @@ package ru.parsentev.task_001;
 import static java.lang.Math.pow;
 
 /**
- * @author parsentev
- * @since 18.07.2016
+ * Калькулятор, поддерживающий 5 базовых операций:
+ * сложение, вычитание, умножение, деление и возведение в степень.
+ * @author fnickru
+ * @since 03.06.2018
  */
 public final class Calculator {
     /**

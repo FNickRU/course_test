@@ -1,19 +1,19 @@
 package ru.parsentev.task_002;
 
-import org.junit.Ignore;
+import static org.hamcrest.core.Is.is;
+import static org.junit.Assert.assertThat;
+
 import org.junit.Test;
 
-import static org.hamcrest.core.Is.is;
-import static org.junit.Assert.*;
-
 /**
- * TODO: comment
- *
+ * Тест класса точки.
  * @author parsentev
  * @since 28.07.2016
  */
-@Ignore
 public class PointTest {
+    /**
+     * Расстояние между точками (0,0) и (0,1) равно 1.
+     */
     @Test
     public void whenHasTwoPointThenReturnDistance() {
         final Point first = new Point(0, 0);

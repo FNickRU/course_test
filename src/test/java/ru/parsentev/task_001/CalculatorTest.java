@@ -1,9 +1,9 @@
 package ru.parsentev.task_001;
 
-import org.junit.Test;
-
 import static org.hamcrest.core.Is.is;
 import static org.junit.Assert.assertThat;
+
+import org.junit.Test;
 
 /**
  * @author parsentev
