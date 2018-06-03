@@ -1,3 +1,6 @@
+[![Build Status](https://travis-ci.org/FNickRU/course_test.svg?branch=master)](https://travis-ci.org/FNickRU/course_test)
+[![codecov](https://codecov.io/gh/FNickRU/course_test/branch/master/graph/badge.svg)](https://codecov.io/gh/FNickRU/course_test)
+
 # Курс тест по Java
 
 Цель курса
