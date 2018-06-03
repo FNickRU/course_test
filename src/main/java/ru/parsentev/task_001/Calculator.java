@@ -1,38 +1,70 @@
 package ru.parsentev.task_001;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-
-import static org.slf4j.LoggerFactory.getLogger;
+import static java.lang.Math.pow;
 
 /**
  * @author parsentev
  * @since 18.07.2016
  */
-public class Calculator {
-    private static final Logger log = getLogger(Calculator.class);
+public final class Calculator {
+    /**
+     * Результат последней операции.
+     */
+    private double result = 0;
 
+    /**
+     * Возвращает результат последней операции.
+     * @return result
+     */
     public double getResult() {
-        throw new UnsupportedOperationException();
+        return result;
     }
 
-    public void add(double first, double second) {
-        throw new UnsupportedOperationException();
+    /**
+     * Операция суммы.
+     * @param first - первый операнд
+     * @param second - второй операнд
+     */
+    public void add(final double first, final double second) {
+        result = first + second;
     }
 
-    public void substract(double first, double second) {
-        throw new UnsupportedOperationException();
+    /**
+     * Операция разности.
+     * @param first - первый операнд
+     * @param second - второй операнд
+     */
+    public void subtract(final double first, final double second) {
+        result = first - second;
     }
 
-    public void multiple(double first, double second) {
-        throw new UnsupportedOperationException();
+    /**
+     * Операция произведения.
+     * @param first - первый операнд
+     * @param second - второй операнд
+     */
+    public void multiple(final double first, final double second) {
+        result = first * second;
     }
 
-    public void div(double first, double second) {
-        throw new UnsupportedOperationException();
+    /**
+     * Операция деления.
+     * @param first - первый операнд
+     * @param second - второй операнд
+     */
+    public void divide(final double first, final double second) {
+        if (second == 0) {
+            throw new IllegalStateException();
+        }
+        result = first / second;
     }
 
-    public void expand(double first, double second) {
-        throw new UnsupportedOperationException();
+    /**
+     * Операция возведения в степень.
+     * @param first - первый операнд
+     * @param second - второй операнд
+     */
+    public void expand(final double first, final double second) {
+        result = pow(first, second);
     }
 }
