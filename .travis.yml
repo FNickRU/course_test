@@ -3,3 +3,10 @@ sudo: false
 
 after_success:
   - bash <(curl -s https://codecov.io/bash)
+
+notifications:
+  email:
+    recipients:
+      - mayorov-s-a@yandex.ru
+    on_success: never
+    on_failure: always
