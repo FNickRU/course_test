@@ -44,7 +44,7 @@
                 <artifactId>maven-checkstyle-plugin</artifactId>
                 <version>${check.ver}</version>
                 <configuration>
-                    <configLocation>sun_checks.xml</configLocation>
+                    <configLocation>checkstyle.xml</configLocation>
                     <consoleOutput>true</consoleOutput>
                     <failOnViolation>false</failOnViolation>
                     <logViolationsToConsole>true</logViolationsToConsole>

@@ -13,15 +13,15 @@ public class Triangle {
     /**
      * Первая вершина.
      */
-    protected final Point first;
+    private final Point first;
     /**
      * Вторая вершина.
      */
-    protected final Point second;
+    private final Point second;
     /**
      * Третья вершина.
      */
-    protected final Point third;
+    private final Point third;
 
     /**
      * Конструктор с параметрами.
@@ -36,19 +36,23 @@ public class Triangle {
     }
 
     /**
+     * Метод доступа к вершинам треугольника.
+     * @return массив из 3 объектов класса Point - вершин треугольника
+     */
+    public Point[] getPoints() {
+        return new Point[]{first, second, third};
+    }
+
+    /**
      * Метод проверки треугольника на существование.
      * @return true - если треугольник существует, false - иначе.
      */
     public boolean exists() {
-        boolean isExist;
-
         double a = first.distanceTo(second);
         double b = second.distanceTo(third);
         double c = third.distanceTo(first);
 
-        isExist = (a + b > c) && (a + c > b) && (b + c > a);
-
-        return isExist;
+        return (a + b > c) && (a + c > b) && (b + c > a);
     }
 
     /**
@@ -57,8 +61,6 @@ public class Triangle {
      * @throws IllegalStateException - если треугольник не существует.
      */
     public double area() {
-        double result;
-
         if (!exists()) {
             throw new IllegalStateException();
         }
@@ -68,8 +70,6 @@ public class Triangle {
         double c = third.distanceTo(first);
         double p = (a + b + c) / 2;
 
-        result = sqrt(p * (p - a) * (p - b) * (p - c));
-
-        return result;
+        return sqrt(p * (p - a) * (p - b) * (p - c));
     }
 }
