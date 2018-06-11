@@ -12,7 +12,6 @@ import ru.parsentev.task_002.Point;
  * @since 28.07.2016
  */
 public class IsoscelesTriangleTest {
-
     /**
      * Равнобедренный треугольник с вершинами (0,0), (0,2) и (2,0) существует.
      */

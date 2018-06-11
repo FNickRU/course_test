@@ -10,7 +10,6 @@ import org.junit.Test;
  * @since 19.07.2016
  */
 public class CalculatorTest {
-
     /**
      * 1+1=2.
      */
