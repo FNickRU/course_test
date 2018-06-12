@@ -4,6 +4,7 @@
  * boolean exists() - проверяет существует ли треугольник или нет.
  * double area() - вычисляет площадь треугольника.
  * Если треугольник не существует выбросить IllegalStateException
+ *
  * @author parsentev
  * @since 19.07.2016
  */

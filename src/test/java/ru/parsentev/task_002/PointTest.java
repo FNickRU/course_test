@@ -7,6 +7,7 @@ import org.junit.Test;
 
 /**
  * Тест класса точки.
+ *
  * @author parsentev
  * @since 28.07.2016
  */

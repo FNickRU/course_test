@@ -9,6 +9,7 @@ import ru.parsentev.task_002.Point;
 
 /**
  * Тест класса треугольника в декартовых координатах.
+ *
  * @author parsentev
  * @since 28.07.2016
  */

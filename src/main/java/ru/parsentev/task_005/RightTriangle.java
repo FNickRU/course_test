@@ -7,6 +7,7 @@ import ru.parsentev.task_003.Triangle;
 
 /**
  * Класс прямоугольного треугольника в декартовой системе координат.
+ *
  * @author fnickru
  * @since 11.06.2018
  */

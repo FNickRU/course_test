@@ -5,6 +5,7 @@ import ru.parsentev.task_003.Triangle;
 
 /**
  * Класс равнобедренного треугольника в декартовой системе координат.
+ *
  * @author fnickru
  * @since 08.06.2018
  */

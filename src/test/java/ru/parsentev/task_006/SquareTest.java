@@ -1,21 +1,21 @@
 package ru.parsentev.task_006;
 
-import org.junit.Ignore;
+import static org.hamcrest.Matchers.is;
+import static org.junit.Assert.assertThat;
+
 import org.junit.Test;
 import ru.parsentev.task_002.Point;
-import ru.parsentev.task_005.RightTriangle;
-
-import static org.hamcrest.core.Is.is;
-import static org.junit.Assert.*;
 
 /**
- * TODO: comment
+ * Тест класса квадрата в декартовой системе координат.
  *
  * @author parsentev
  * @since 28.07.2016
  */
-@Ignore
 public class SquareTest {
+    /**
+     * Квадрат с вершинами (0,0), (0,2), (2,2) и (2,0) существует.
+     */
     @Test
     public void checkExists() {
         Point first = new Point(0, 0);
@@ -26,6 +26,9 @@ public class SquareTest {
         assertThat(result, is(true));
     }
 
+    /**
+     * Квадрат с вершинами (0,0), (0,2), (0,4) и (0,6) не существует.
+     */
     @Test
     public void inLine() {
         Point first = new Point(0, 0);
@@ -36,6 +39,9 @@ public class SquareTest {
         assertThat(result, is(false));
     }
 
+    /**
+     * Квадрат с вершинами (0,0), (1,2), (1,4) и (0,6) не существует.
+     */
     @Test
     public void notSquare() {
         Point first = new Point(0, 0);

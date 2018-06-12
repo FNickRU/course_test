@@ -6,6 +6,8 @@ import static org.junit.Assert.assertThat;
 import org.junit.Test;
 
 /**
+ * Тест простого калькулятора.
+ *
  * @author parsentev
  * @since 19.07.2016
  */

@@ -6,6 +6,7 @@ import ru.parsentev.task_002.Point;
 
 /**
  * Класс треугольника в декартовой системе координат.
+ *
  * @author fnickru
  * @since 03.06.2018
  */

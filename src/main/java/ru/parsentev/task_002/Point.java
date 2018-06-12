@@ -4,6 +4,7 @@ import static java.lang.Math.sqrt;
 
 /**
  * Класс точки в декартовой системе координат.
+ *
  * @author fnickru
  * @since 03.06.2018
  */
