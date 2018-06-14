@@ -13,7 +13,7 @@ import org.junit.Test;
  */
 public class CalculatorTest {
     /**
-     * 1+1=2.
+     * 1 + 1 = 2.
      */
     @Test
     public void whenAddOneOnOneThenResultTwo() {
@@ -23,7 +23,7 @@ public class CalculatorTest {
     }
 
     /**
-     * 1-1=0.
+     * 1 - 1 = 0.
      */
     @Test
     public void whenSubstractOneOnOneThenResultZero() {
@@ -33,7 +33,7 @@ public class CalculatorTest {
     }
 
     /**
-     * 1*1=1.
+     * 1 * 1 = 1.
      */
     @Test
     public void whenMultipleOneOnOneThenResultOne() {
@@ -43,7 +43,7 @@ public class CalculatorTest {
     }
 
     /**
-     * 1/1=1.
+     * 1 / 1 = 1.
      */
     @Test
     public void whenDivOneOnOneThenResultOne() {
@@ -53,7 +53,7 @@ public class CalculatorTest {
     }
 
     /**
-     * 0/0=EXEPTION.
+     * 0 / 0 = EXCEPTION.
      */
     @Test(expected = IllegalStateException.class)
     public void whenDivByZeroThenException() {
