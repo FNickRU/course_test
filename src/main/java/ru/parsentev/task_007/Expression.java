@@ -6,7 +6,7 @@ import ru.parsentev.task_001.Calculator;
  * Класс - парсер математических выражений.
  *
  * @author fnickru
- * @since 12.06.2018
+ * @since 14.06.2018
  */
 public class Expression {
     /**
@@ -38,7 +38,7 @@ public class Expression {
      * @return результат выражения
      */
     public double calc() {
-        String[] values = expr.split("([+-/*])");
+        String[] values = expr.split("((?<=[+-/*])|(?=[+-/*]))");
 
         if (values.length == EXPRESSION_SIZE) {
             double first = Double.valueOf(values[0]);
