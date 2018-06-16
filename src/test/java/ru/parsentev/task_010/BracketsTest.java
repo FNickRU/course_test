@@ -1,19 +1,20 @@
 package ru.parsentev.task_010;
 
-import org.junit.Ignore;
+import static org.hamcrest.Matchers.is;
+import static org.junit.Assert.assertThat;
+
 import org.junit.Test;
 
-import static org.hamcrest.core.Is.is;
-import static org.junit.Assert.*;
-
 /**
- * TODO: comment
+ * Тест анализатора строки на корректность расстановки скобок.
  *
  * @author parsentev
  * @since 28.07.2016
  */
-@Ignore
 public class BracketsTest {
+    /**
+     * "()()()" - корректная строка.
+     */
     @Test
     public void valid() {
         Brackets brackets = new Brackets("()()()");
@@ -21,6 +22,9 @@ public class BracketsTest {
         assertThat(result, is(true));
     }
 
+    /**
+     * "(" - некорректная строка.
+     */
     @Test
     public void inValid() {
         Brackets brackets = new Brackets("(");

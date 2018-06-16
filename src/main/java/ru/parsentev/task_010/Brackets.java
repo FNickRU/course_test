@@ -1,19 +1,32 @@
 package ru.parsentev.task_010;
 
+import static org.apache.commons.lang3.StringUtils.countMatches;
+
 /**
- * TODO: comment
+ * Класс, проверяющий корректность расставления скобок в строке.
  *
- * @author parsentev
- * @since 28.07.2016
+ * @author fnickru
+ * @since 16.06.2018
  */
 public class Brackets {
+    /**
+     * Анализируемая строка.
+     */
     private final String line;
 
+    /**
+     * Конструктор с параметром.
+     * @param line - анализируемая строка
+     */
     public Brackets(final String line) {
         this.line = line;
     }
 
+    /**
+     * Метод проверки скобок в строке на корректность.
+     * @return true - если скобки в строке расставлены правильно, false - иначе.
+     */
     public boolean isCorrect() {
-        throw new UnsupportedOperationException();
+        return countMatches(line, '(') == countMatches(line, ')');
     }
 }
