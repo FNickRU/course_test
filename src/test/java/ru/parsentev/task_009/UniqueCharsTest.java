@@ -1,18 +1,20 @@
 package ru.parsentev.task_009;
 
-import org.junit.Ignore;
+import static org.hamcrest.Matchers.is;
+import static org.junit.Assert.assertThat;
+
 import org.junit.Test;
-import static org.hamcrest.core.Is.is;
-import static org.junit.Assert.*;
 
 /**
- * TODO: comment
+ * Тесты анализатора строк на уникальность символов.
  *
  * @author parsentev
  * @since 28.07.2016
  */
-@Ignore
 public class UniqueCharsTest {
+    /**
+     * В строке "2+2" два уникальных символа: "2" и "+".
+     */
     @Test
     public void hasNotUnique() {
         UniqueChars unique = new UniqueChars("2+2");
@@ -20,6 +22,9 @@ public class UniqueCharsTest {
         assertThat(result, is(2));
     }
 
+    /**
+     * В строке "123" все три символа уникальны.
+     */
     @Test
     public void onlyUnique() {
         UniqueChars unique = new UniqueChars("123");
