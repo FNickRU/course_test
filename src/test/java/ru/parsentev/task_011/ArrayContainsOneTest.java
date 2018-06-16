@@ -1,18 +1,20 @@
 package ru.parsentev.task_011;
 
-import org.junit.Ignore;
+import static org.hamcrest.Matchers.is;
+import static org.junit.Assert.assertThat;
+
 import org.junit.Test;
-import static org.hamcrest.core.Is.is;
-import static org.junit.Assert.*;
 
 /**
- * TODO: comment
+ * Тест анализатора массива на однородность состава.
  *
  * @author parsentev
  * @since 28.07.2016
  */
-@Ignore
 public class ArrayContainsOneTest {
+    /**
+     * Массив {1} состоит только из единиц.
+     */
     @Test
     public void onlyOne() {
         ArrayContainsOne array = new ArrayContainsOne(new int[] {1});
@@ -20,6 +22,9 @@ public class ArrayContainsOneTest {
         assertThat(result, is(true));
     }
 
+    /**
+     * Массив {1, 1, 0} состоит не только из единиц.
+     */
     @Test
     public void notOnlyOne() {
         ArrayContainsOne array = new ArrayContainsOne(new int[] {1, 1, 0});
