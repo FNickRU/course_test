@@ -6,8 +6,8 @@ import java.util.Arrays;
  * Класс проверки массива из нулей и единиц на то, что в нем нет нулей.
  * При наличии в массиве иных значений поведение не определено.
  *
- * @author parsentev
- * @since 28.07.2016
+ * @author fnickru
+ * @since 16.06.2018
  */
 public class ArrayContainsOne {
     /**
