@@ -28,6 +28,7 @@ public class ArrayContainsOne {
      * @return true - если массив сотоит только из единиц, false - иначе.
      */
     public boolean containsOnlyOne() {
-        return Arrays.stream(values).reduce(2, Integer::min) == 1;
+        int min = Arrays.stream(values).reduce(Integer.MAX_VALUE, Integer::min);
+        return min == 1;
     }
 }
