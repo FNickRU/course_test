@@ -1,18 +1,20 @@
 package ru.parsentev.task_014;
 
-import org.junit.Ignore;
+import static org.hamcrest.Matchers.is;
+import static org.junit.Assert.assertThat;
+
 import org.junit.Test;
-import static org.hamcrest.core.Is.is;
-import static org.junit.Assert.*;
 
 /**
- * TODO: comment
+ * Тесты разворота предложений по словам.
  *
  * @author parsentev
  * @since 28.07.2016
  */
-@Ignore
 public class ReversePhraseTest {
+    /**
+     * "code and earn" -> "earn and code".
+     */
     @Test
     public void oneWords() {
         ReversePhrase phrase = new ReversePhrase("code and earn");
@@ -20,6 +22,9 @@ public class ReversePhraseTest {
         assertThat(result, is("earn and code"));
     }
 
+    /**
+     * "Java" -> "Java".
+     */
     @Test
     public void oneWord() {
         ReversePhrase phrase = new ReversePhrase("Java");
