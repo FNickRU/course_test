@@ -1,18 +1,23 @@
 package ru.parsentev.task_016;
 
-import org.junit.Ignore;
+import static org.hamcrest.Matchers.is;
+import static org.junit.Assert.assertThat;
+
 import org.junit.Test;
-import static org.hamcrest.core.Is.is;
-import static org.junit.Assert.*;
 
 /**
- * TODO: comment
+ * Тесты анализатора двумерных массивов на наличие в них выигрышной раскладки крестиков-ноликов.
  *
  * @author parsentev
  * @since 28.07.2016
  */
-@Ignore
 public class TicTacToeTest {
+    /**
+     * [1, 0, 0]
+     * [1, 1, 0]
+     * [0, 0, 1]
+     * Выигрышная последовательность - на главной диагонали.
+     */
     @Test
     public void hasWinner() {
         TicTacToe game = new TicTacToe(
@@ -26,6 +31,12 @@ public class TicTacToeTest {
         assertThat(result, is(true));
     }
 
+    /**
+     * [1, 0, 1]
+     * [1, 0, 0]
+     * [0, 1, 1]
+     * Выигрышной последовательности нет.
+     */
     @Test
     public void hasNotWinner() {
         TicTacToe game = new TicTacToe(
