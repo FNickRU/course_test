@@ -8,7 +8,7 @@ import static org.apache.commons.lang3.StringUtils.countMatches;
  * @author fnickru
  * @since 16.06.2018
  */
-public class Brackets {
+public final class Brackets {
     /**
      * Анализируемая строка.
      */

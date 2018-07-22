@@ -8,7 +8,7 @@ import java.util.List;
  * @author parsentev
  * @since 28.07.2016
  */
-public class Combine {
+public final class Combine {
 
     private final int[] values;
 

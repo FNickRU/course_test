@@ -9,7 +9,7 @@ import ru.parsentev.task_003.Triangle;
  * @author fnickru
  * @since 08.06.2018
  */
-public class IsoscelesTriangle extends Triangle {
+public final class IsoscelesTriangle extends Triangle {
     /**
      * Конструктор с параметрами.
      * @param first - первая вершина

@@ -14,7 +14,7 @@ import java.util.List;
  * @author fnickru
  * @since 22.06.2018
  */
-public class CashMachine {
+public final class CashMachine {
     /**
      * Номиналы монет в разменной машине.
      */

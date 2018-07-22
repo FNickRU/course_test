@@ -8,7 +8,7 @@ import ru.parsentev.task_013.MonoArray;
  * @author fnickru
  * @since 18.06.2018
  */
-public class TicTacToe {
+public final class TicTacToe {
 
     /**
      * Направление последовательности знаков:

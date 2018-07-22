@@ -9,7 +9,7 @@ import java.util.List;
  * @author parsentev
  * @since 28.07.2016
  */
-public class Maze {
+public final class Maze {
     private final int[][] values;
 
     public Maze(final int[][] values) {

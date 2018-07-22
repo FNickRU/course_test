@@ -10,7 +10,7 @@ import java.util.List;
  * @author fnickru
  * @since 15.06.2018
  */
-public class Primes {
+public final class Primes {
     /**
      * Предел вычисляемого диапазона простых чисел.
      */

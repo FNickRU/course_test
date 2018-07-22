@@ -6,7 +6,7 @@ package ru.parsentev.task_012;
  * @author fnickru
  * @since 16.06.2018
  */
-public class SequenceArray {
+public final class SequenceArray {
     /**
      * Анализируемый массив.
      */

@@ -8,7 +8,7 @@ import org.apache.commons.lang3.ArrayUtils;
  * @author fnickru
  * @since 17.06.2018
  */
-public class CycleShift {
+public final class CycleShift {
     /**
      * Входной массив.
      */

@@ -8,7 +8,7 @@ import java.util.Arrays;
  * @author fnickru
  * @since 17.06.2018
  */
-public class MonoArray {
+public final class MonoArray {
     /**
      * Анализируемый массив.
      */

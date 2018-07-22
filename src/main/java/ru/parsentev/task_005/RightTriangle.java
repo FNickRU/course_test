@@ -11,7 +11,7 @@ import ru.parsentev.task_003.Triangle;
  * @author fnickru
  * @since 11.06.2018
  */
-public class RightTriangle extends Triangle {
+public final class RightTriangle extends Triangle {
     /**
      * Конструктор с параметрами.
      * @param first - первая вершина

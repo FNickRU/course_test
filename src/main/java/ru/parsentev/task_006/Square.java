@@ -8,7 +8,7 @@ import ru.parsentev.task_002.Point;
  * @author fnickru
  * @since 12.06.2018
  */
-public class Square {
+public final class Square {
     /**
      * Левая нижняя вершина.
      */

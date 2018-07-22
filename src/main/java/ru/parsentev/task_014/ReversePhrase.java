@@ -6,7 +6,7 @@ package ru.parsentev.task_014;
  * @author fnickru
  * @since 17.06.2018
  */
-public class ReversePhrase {
+public final class ReversePhrase {
     /**
      * Разворачиваемая строка.
      */

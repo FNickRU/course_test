@@ -8,7 +8,7 @@ import ru.parsentev.task_001.Calculator;
  * @author fnickru
  * @since 14.06.2018
  */
-public class Expression {
+public final class Expression {
     /**
      * Размер допустимого выражения.
      * Пример: 2+2 - допустимо, 2+2-3 - нет.

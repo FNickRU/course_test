@@ -6,7 +6,7 @@ package ru.parsentev.task_009;
  * @author fnickru
  * @since 16.06.2018
  */
-public class UniqueChars {
+public final class UniqueChars {
     /**
      * Анализируемая строка.
      */

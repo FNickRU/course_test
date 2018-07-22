@@ -6,7 +6,7 @@ package ru.parsentev.task_018;
  * @author parsentev
  * @since 28.07.2016
  */
-public class Pool {
+public final class Pool {
     private final int[][] values;
 
     public Pool(final int[][] values) {

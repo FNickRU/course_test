@@ -9,7 +9,7 @@ import java.util.Arrays;
  * @author fnickru
  * @since 16.06.2018
  */
-public class ArrayContainsOne {
+public final class ArrayContainsOne {
     /**
      * Анализируемый массив.
      */
