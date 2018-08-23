@@ -1,5 +1,7 @@
 package ru.parsentev.task_002;
 
+import java.util.Objects;
+
 import static java.lang.Math.sqrt;
 
 /**
@@ -26,6 +28,49 @@ public final class Point {
     public Point(final int x, final int y) {
         this.x = x;
         this.y = y;
+    }
+
+    /**
+     * Метод получения координаты точки по оси абцисс.
+     * @return x - координату по оси абцисс
+     */
+    public int getX() {
+        return x;
+    }
+
+    /**
+     * Метод получения координаты точки по оси ординат.
+     * @return y - координату по оси ординат
+     */
+    public int getY() {
+        return y;
+    }
+
+    /**
+     * Метод проверки равенства двух точек.
+     * Точки равны, если координаты равны.
+     * @param o - объект, с которым сравнивается точка
+     * @return true - если объекты (точки) равны, false - иначе.
+     */
+    @Override
+    public boolean equals(final Object o) {
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
+        Point point = (Point) o;
+        return x == point.x && y == point.y;
+    }
+
+    /**
+     * Метод получения хэша точки.
+     * @return хэш объекта точки
+     */
+    @Override
+    public int hashCode() {
+        return Objects.hash(x, y);
     }
 
     /**
