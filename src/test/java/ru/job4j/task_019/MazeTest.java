@@ -5,7 +5,7 @@ import static org.junit.Assert.assertThat;
 import static java.util.Arrays.asList;
 
 import org.junit.Test;
-import ru.parsentev.task_002.Point;
+import ru.job4j.task_002.Point;
 import java.util.List;
 
 /**

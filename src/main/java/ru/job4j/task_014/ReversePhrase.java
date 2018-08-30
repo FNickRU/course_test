@@ -1,44 +1,37 @@
 package ru.job4j.task_014;
 
-
-
-import java.util.Arrays;
-import java.util.Iterator;
-
-
-
 /**
- * TODO: comment
+ * Класс для "разворота" предложений по словам в обратном порядке.
  *
- * @author job4j
- * @since 28.07.2016
+ * @author fnickru
+ * @since 17.06.2018
  */
-public class ReversePhrase {
+public final class ReversePhrase {
+    /**
+     * Разворачиваемая строка.
+     */
     private final String line;
 
+    /**
+     * Конструктор с параметром.
+     * @param line - разворачиваемая строка
+     */
     public ReversePhrase(final String line) {
         this.line = line;
     }
 
+    /**
+     * Метод для "разворота" предложений по словам.
+     * @return перевернутую строку.
+     */
     public String reverse() {
-        final String[] phrases = this.line.split(" ");
-        for (int index=0;index!=phrases.length/2;index++) {
-            String temp = phrases[phrases.length - index - 1];
-            phrases[phrases.length - index - 1] = phrases[index];
-            phrases[index] = temp;
-        }
-        return this.convert(phrases, ' ');
-    }
+        String[] words = line.split("\\s");
+        StringBuilder reverse = new StringBuilder();
 
-    private String convert(String[] values, char separator) {
-        StringBuilder result = new StringBuilder();
-        Iterator<String> it = Arrays.asList(values).iterator();
-        while (it.hasNext()) {
-            result.append(it.next());
-            if (it.hasNext()) {
-                result.append(separator);
-            }
+        for (int idx = words.length - 1; idx >= 0; --idx) {
+            reverse.append(words[idx]).append(' ');
         }
-        return result.toString();
+
+        return reverse.toString().trim();
     }
 }

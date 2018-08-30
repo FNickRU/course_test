@@ -1,33 +1,39 @@
 package ru.job4j.task_009;
 
 /**
- * TODO: comment
+ * Класс, подсчитывающий количество уникальных символов в данной строке.
  *
- * @author job4j
- * @since 28.07.2016
+ * @author fnickru
+ * @since 16.06.2018
  */
-public class UniqueChars {
+public final class UniqueChars {
+    /**
+     * Анализируемая строка.
+     */
     private final String line;
 
+    /**
+     * Конструктор с параметром.
+     * @param line - анализируемая строка
+     */
     public UniqueChars(final String line) {
         this.line = line;
     }
 
+    /**
+     * Метод подсчета уникальных символов в строке.
+     * @return количество уникальных символов в строке
+     */
     public int unique() {
-        int result = 0;
-        for (int out=0;out!=this.line.length();out++) {
-            boolean count = true;
-            for (int in=0;in!=out;in++) {
-                if (this.line.charAt(out) == this.line.charAt(in)) {
-                    count = false;
-                    break;
-                }
-            }
-            if (count) {
-                ++result;
-            }
+        StringBuilder uniques = new StringBuilder();
 
+        for (int i = 0; i < line.length(); ++i) {
+            char symbol = line.charAt(i);
+            if (uniques.toString().indexOf(symbol) < 0) {
+                uniques.append(symbol);
+            }
         }
-        return result;
+
+        return uniques.length();
     }
 }

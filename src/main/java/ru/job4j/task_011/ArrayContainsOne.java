@@ -1,9 +1,6 @@
 package ru.job4j.task_011;
 
-
 import java.util.Arrays;
-
-
 
 /**
  * Класс проверки массива из нулей и единиц на то, что в нем нет нулей.

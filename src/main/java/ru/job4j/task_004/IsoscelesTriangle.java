@@ -1,29 +1,38 @@
 package ru.job4j.task_004;
 
-
 import ru.job4j.task_002.Point;
 import ru.job4j.task_003.Triangle;
 
-
-
 /**
- * TODO: comment
+ * Класс равнобедренного треугольника в декартовой системе координат.
  *
- * @author job4j
- * @since 28.07.2016
+ * @author fnickru
+ * @since 08.06.2018
  */
-public class IsoscelesTriangle extends Triangle {
-
-    public IsoscelesTriangle(Point first, Point second, Point third) {
+public final class IsoscelesTriangle extends Triangle {
+    /**
+     * Конструктор с параметрами.
+     * @param first - первая вершина
+     * @param second - вторая вершина
+     * @param third - третья вершина
+     */
+    public IsoscelesTriangle(final Point first,
+                             final Point second,
+                             final Point third) {
         super(first, second, third);
     }
 
+    /**
+     * Метод проверки треугольника на существование.
+     * @return true - если равнобедренный треугольник существует, false - иначе.
+     */
     @Override
     public boolean exists() {
-        boolean result = false;
-        if (super.exists()) {
-            result = this.ab == this.bc || this.ca == this.bc || this.ab == this.ca;
-        }
-        return result;
+        Point[] points = super.getPoints();
+        double a = points[0].distanceTo(points[1]);
+        double b = points[1].distanceTo(points[2]);
+        double c = points[2].distanceTo(points[0]);
+
+        return super.exists() && ((a == b) || (a == c) || (b == c));
     }
 }

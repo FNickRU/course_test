@@ -30,11 +30,17 @@ public class ExpressionTest {
         new Expression("2+").calc();
     }
 
+    /**
+     * 2 ++ = EXCEPTION.
+     */
     @Test(expected = IllegalStateException.class)
     public void whenMultiOpsThenException() {
         new Expression("2++").calc();
     }
 
+    /**
+     * 1 + 1 = 2.
+     */
     @Test
     public void whenOnePlusOneThenTwo() {
         Expression expr = new Expression("1+1");

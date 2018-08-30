@@ -73,5 +73,4 @@ public class TriangleTest {
         Point third = new Point(0, 0);
         new Triangle(first, second, third).area();
     }
-
 }

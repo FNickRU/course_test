@@ -1,41 +1,76 @@
 package ru.job4j.task_003;
 
+import static java.lang.Math.sqrt;
 
 import ru.job4j.task_002.Point;
 
-import static java.lang.Math.sqrt;
-
-
 /**
- * TODO: comment
+ * Класс треугольника в декартовой системе координат.
  *
- * @author job4j
- * @since 28.07.2016
+ * @author fnickru
+ * @since 03.06.2018
  */
 public class Triangle {
+    /**
+     * Первая вершина.
+     */
+    private final Point first;
+    /**
+     * Вторая вершина.
+     */
+    private final Point second;
+    /**
+     * Третья вершина.
+     */
+    private final Point third;
 
-    protected final double ab;
-    protected final double bc;
-    protected final double ca;
-
+    /**
+     * Конструктор с параметрами.
+     * @param first - первая вершина
+     * @param second - вторая вершина
+     * @param third - третья вершина
+     */
     public Triangle(final Point first, final Point second, final Point third) {
-        this.ab = first.distanceTo(second);
-        this.bc = second.distanceTo(third);
-        this.ca = third.distanceTo(first);
+        this.first = first;
+        this.second = second;
+        this.third = third;
     }
 
+    /**
+     * Метод доступа к вершинам треугольника.
+     * @return массив из 3 объектов класса Point - вершин треугольника
+     */
+    public Point[] getPoints() {
+        return new Point[]{first, second, third};
+    }
+
+    /**
+     * Метод проверки треугольника на существование.
+     * @return true - если треугольник существует, false - иначе.
+     */
     public boolean exists() {
-        return (this.ab < this.bc + this.ca) &&
-                (this.bc < this.ab + this.ca) &&
-                (this.ca < this.ab + this.bc);
+        double a = first.distanceTo(second);
+        double b = second.distanceTo(third);
+        double c = third.distanceTo(first);
+
+        return (c < a + b) && (b < a + c) && (a < b + c);
     }
 
+    /**
+     * Метод расчета площади треугольника.
+     * @return площадь треугольника.
+     * @throws IllegalStateException - если треугольник не существует.
+     */
     public double area() {
-        if (this.exists()) {
-            double p = (this.ab + this.bc + this.ca)/2;
-            return sqrt(p * (p - this.ab) * (p - this.bc) * (p - this.ca));
-        } else {
+        if (!exists()) {
             throw new IllegalStateException("Triangle does not exists");
         }
+
+        double a = first.distanceTo(second);
+        double b = second.distanceTo(third);
+        double c = third.distanceTo(first);
+        double p = (a + b + c) / 2;
+
+        return sqrt(p * (p - a) * (p - b) * (p - c));
     }
 }

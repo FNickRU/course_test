@@ -1,49 +1,128 @@
 package ru.job4j.task_016;
 
-
-
-
+import ru.job4j.task_013.MonoArray;
 
 /**
- * TODO: comment
+ * Класс проверки поля для игры в крестики-нолики на наличие в нем выигрышной позиции.
  *
- * @author job4j
- * @since 28.07.2016
+ * @author fnickru
+ * @since 18.06.2018
  */
-public class TicTacToe {
-    private static final int START = 1;
+public final class TicTacToe {
 
-    private final int[][] values;
-
-    public TicTacToe(final int[][] values) {
-        this.values = values;
+    /**
+     * Направление последовательности знаков:
+     * в строку, в столбик или по одной из диагоналей.
+     */
+    private enum Dir {
+        /**
+         * Направление: в строку.
+         */
+        HOR,
+        /**
+         * Направление: в столбец.
+         */
+        VER,
+        /**
+         * Направление: по главной диагонали.
+         */
+        MAJ_DIAG,
+        /**
+         * Направление: по побочной диагонали.
+         */
+        MIN_DIAG
     }
 
+    /**
+     * Размер поля для игры в крестики-нолики (может отличаться от размера массива).
+     */
+    private final int fieldSize;
+
+    /**
+     * Анализируемый двумерный массив.
+     */
+    private final int[][] values;
+
+    /**
+     * Конструктор с одним параметром (поле размером с массив).
+     * @param values - анализируемый двумерный массив.
+     */
+    public TicTacToe(final int[][] values) {
+        this(values, values.length);
+    }
+
+    /**
+     * Конструктор с двумя параметрами.
+     * @param values - анализируемый двумерный массив.
+     * @param size - размер игрового поля.
+     */
+    public TicTacToe(final int[][] values, final int size) {
+        this.values = values;
+        fieldSize = size;
+    }
+
+    /**
+     * Метод для проверки, есть ли в двумерном массиве выигрышная комбинация.
+     * @return true - если комбинация есть, false - иначе.
+     */
     public boolean hasWinner() {
-        boolean result = false;
-        for (int x=0;x<this.values.length;x++) {
-            for (int y=0;y<this.values.length;y++) {
-                if (this.traversal(x, y, START, 0, 1) ||
-                        this.traversal(x, y, START, 1, 0) ||
-                        this.traversal(x, y, START, 1, 1)) {
-                    result = true;
-                    break;
+        boolean hasWinner = false;
+        all:
+        for (int y = 0; y < values.length; ++y) {
+            for (int x = 0; x < values.length; ++x) {
+                boolean inHRange = values.length - x >= fieldSize;
+                boolean inVRange = values.length - y >= fieldSize;
+                boolean inRange = inHRange && inVRange;
+                if (inHRange && isSequenceWins(x, y, Dir.HOR)
+                        || inVRange && isSequenceWins(x, y, Dir.VER)
+                        || inRange && isSequenceWins(x, y, Dir.MAJ_DIAG)
+                        || inRange && isSequenceWins(x, y, Dir.MIN_DIAG)) {
+                    hasWinner = true;
+                    break all;
                 }
             }
         }
-        return result;
+
+        return hasWinner;
     }
 
-    public boolean traversal(int x, int y, int count, int stepX, int stepY) {
-        boolean result = false;
-        if (count == 3) {
-            result = true;
-        } else {
-            if (x + stepX < this.values.length && y + stepY < this.values.length &&
-                    this.values[x][y] == this.values[x + stepX][y + stepY]) {
-                result = this.traversal(x + stepX, y + stepY, count + 1, stepX, stepY);
-            }
+    /**
+     * Проверка, является ли данная последовательность выигрышной.
+     * @param x - столбец, с которого начинается последовательность.
+     * @param y - строка, с которой начинается последовательность.
+     * @param direction - направление последовательности.
+     * @return true - если анализируемая последовательность - выигрышная, true - иначе.
+     */
+    private boolean isSequenceWins(final int x,
+                                   final int y,
+                                   final Dir direction) {
+        int[] sequence = new int[fieldSize];
+
+        switch (direction) {
+            case VER:
+                for (int idx = 0; idx < fieldSize; ++idx) {
+                    sequence[idx] = values[y + idx][x];
+                }
+                break;
+            case HOR:
+                for (int idx = 0; idx < fieldSize; ++idx) {
+                    sequence[idx] = values[y][x + idx];
+                }
+                break;
+            case MAJ_DIAG:
+                for (int idx = 0; idx < fieldSize; ++idx) {
+                    sequence[idx] = values[y + idx][x + idx];
+                }
+                break;
+            case MIN_DIAG:
+                for (int idx = 0; idx < fieldSize; ++idx) {
+                    sequence[idx] = values[y + idx][x + (fieldSize - 1) - idx];
+                }
+                break;
+            default:
+                throw new IllegalArgumentException();
         }
-        return result;
+
+        return new MonoArray(sequence).exists();
     }
 }

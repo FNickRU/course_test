@@ -1,57 +1,64 @@
 package ru.job4j.task_020;
 
+import org.apache.commons.lang3.ObjectUtils;
 
-
-import java.util.ArrayList;
-import java.util.Arrays;
+import java.util.LinkedList;
 import java.util.List;
 
-
-
 /**
- * TODO: comment
+ * Класс для поиска всех перестановок массива.
  *
- * @author job4j
- * @since 28.07.2016
+ * @author fnickru
+ * @since 26.08.2018
  */
-public class Combine {
-
+public final class Combine {
+    /**
+     * Значения массива, перестановки которого необходимо найти.
+     */
     private final int[] values;
 
+    /**
+     * Конструктор с параметром.
+     * @param values - входной массив
+     */
     public Combine(final int[] values) {
         this.values = values;
     }
 
+    /**
+     * Метод поиска всех перестановок массива обычным перебором.
+     * @return список из перестановок массива, представленных в виде списков
+     */
     public List<List<Integer>> generate() {
-        return combinations(this.values);
-    }
+        List<List<Integer>> permutations = new LinkedList<>();
 
-    private List<List<Integer>> combinations(int[] list) {
-        List<List<Integer>> result = new ArrayList<>();
-        if (list.length == 2) {
-            result.add(Arrays.asList(list[0], list[1]));
-            result.add(Arrays.asList(list[1], list[0]));
-        } else {
-            for (int index=0;index!=list.length;index++) {
-                for (List<Integer> sample : this.combinations(this.create(list, index))) {
-                    List<Integer> comb = new ArrayList<>();
-                    comb.add(list[index]);
-                    comb.addAll(sample);
-                    result.add(comb);
+        permutations.add(new LinkedList<>());
+
+        for (int value : values) {
+            List<List<Integer>> newSubLists = new LinkedList<>();
+
+            for (List<Integer> subList : permutations) {
+                for (int idx = 0; idx <= subList.size(); ++idx) {
+                    LinkedList<Integer> newSubList = new LinkedList<>(subList);
+                    newSubList.add(idx, value);
+
+                    newSubLists.add(newSubList);
                 }
             }
-        }
-        return result;
-    }
 
-    private int[] create(int[] list, int exclude) {
-        int[] result = new int[list.length-1];
-        int pos = 0;
-        for (int index=0;index!=list.length;index++) {
-            if (index != exclude) {
-                result[pos++] = list[index];
-            }
+            permutations = new LinkedList<>(newSubLists);
         }
-        return result;
+
+        permutations.sort((l1, l2) -> {
+            for (int idx = 0; idx < l1.size(); ++idx) {
+                int c = ObjectUtils.compare(l1.get(idx), l2.get(idx));
+                if (c != 0) {
+                    return c;
+                }
+            }
+            return 0;
+        });
+
+        return permutations;
     }
 }

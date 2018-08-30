@@ -24,10 +24,13 @@ public class PrimesTest {
         assertThat(result, is(asList(2, 3)));
     }
 
+    /**
+     * Простые числа до 5-ти: 2, 3 и 5.
+     */
     @Test
     public void inFive() {
         Primes primes = new Primes(5);
         List<Integer> result = primes.calc();
-        assertThat(result, is(asList(1, 2, 3, 5)));
+        assertThat(result, is(asList(2, 3, 5)));
     }
 }

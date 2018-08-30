@@ -1,45 +1,47 @@
 package ru.job4j.task_008;
 
-
-
 import java.util.ArrayList;
 import java.util.List;
 
-
-
 /**
- * TODO: comment
+ * Класс, вычисляющий все простые числа до N.
+ * Используемый метод - оптимизированное решето Эратосфена.
  *
- * @author job4j
- * @since 28.07.2016
+ * @author fnickru
+ * @since 15.06.2018
  */
-public class Primes {
-
-
+public final class Primes {
+    /**
+     * Предел вычисляемого диапазона простых чисел.
+     */
     private final int limit;
 
+    /**
+     * Конструктор с параметром.
+     * @param limit - предел вычисляемого диапазона простых чисел
+     */
     public Primes(final int limit) {
-        this.limit = limit + 1;
+        this.limit = limit;
     }
 
+    /**
+     * Функция нахождения простых чисел решетом Эратосфена.
+     * @return все простые числа до N
+     */
     public List<Integer> calc() {
-        List<Integer> result = new ArrayList<>();
-        for (int value=1;value!=limit;value++) {
-            if (this.isPrime(value)) {
-                result.add(value);
-            }
-        }
-        return result;
-    }
+        List<Integer> primes = new ArrayList<>();
 
-    private boolean isPrime(int value) {
-        boolean result = true;
-        for (int index=2;index<value;++index) {
-            if (value % index == 0) {
-                result = false;
-                break;
+        for (int num = 2; num <= limit; ++num) {
+            primes.add(num);
+        }
+
+        for (int idx = 0; idx < primes.size(); ++idx) {
+            int prime = primes.get(idx);
+            for (int comp = prime * prime; comp <= limit; comp += prime) {
+                primes.remove(Integer.valueOf(comp));
             }
         }
-        return result;
+
+        return primes;
     }
 }

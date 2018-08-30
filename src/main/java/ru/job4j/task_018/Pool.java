@@ -1,54 +1,68 @@
 package ru.job4j.task_018;
 
-
-
-
-
 /**
- * TODO: comment
+ * Класс для нахождения подмножества единиц максимального размера
+ * в двумерном массиве.
  *
- * @author job4j
- * @since 28.07.2016
+ * @author fnickru
+ * @since 22.07.2018
  */
-public class Pool {
-
+public final class Pool {
+    /**
+     * Значения двумерного массива.
+     */
     private final int[][] values;
-    private final int limit;
-    private final boolean[][] visited;
 
+    /**
+     * Конструктор с параметром.
+     * @param values - значения двумерного массива
+     */
     public Pool(final int[][] values) {
         this.values = values;
-        this.limit = values.length;
-        this.visited = new boolean[this.limit][this.limit];
     }
 
+    /**
+     * Метод определения размера наибольшего множества единиц в заданном массиве.
+     * @return размер максимального подмножества единиц
+     */
     public int maxUnion() {
         int max = 0;
-        for (int x=0;x!=this.limit;x++) {
-            for (int y=0;y!=this.limit;y++) {
-                int result = count(x, y);
-                if (result > max) {
-                    max = result;
+
+        for (int row = 0; row < values.length; ++row) {
+            for (int col = 0; col < values[row].length; ++col) {
+                int setSize = cleanSet(row, col);
+                if (max < setSize) {
+                    max = setSize;
                 }
             }
         }
+
         return max;
     }
 
-    private int count(int x, int y) {
-        int total = 0;
-        if (x >= 0 && y >= 0 && x < this.limit && y < this.limit) {
-            if (!this.visited[x][y]) {
-                this.visited[x][y] = true;
-                if (this.values[x][y] == 1) {
-                    total++;
-                    total += count(x, y - 1);
-                    total += count(x + 1, y);
-                    total += count(x, y + 1);
-                    total += count(x - 1, y);
-                }
-            }
+    /**
+     * Метод для подсчета единиц в подмножестве и дальнейшей его очистки.
+     * Очистка является занулением всего подмножества для пресечения бэктрекинга.
+     * @param row - строка элемента, принадлежащего множеству
+     * @param col - столбец элемента, принадлежащего множеству
+     * @return количество зануленных единиц
+     */
+    private int cleanSet(final int row, final int col) {
+        int subsetSize = 0;
+
+        if (values[row][col] == 1) {
+            values[row][col] = 0;
+
+            subsetSize = 1;
+
+            int height = values.length;
+            int width = values[row].length;
+            subsetSize += row > 0 ? cleanSet(row - 1, col) : 0;
+            subsetSize += row < height - 1 ? cleanSet(row + 1, col) : 0;
+            subsetSize += col > 0 ? cleanSet(row, col - 1) : 0;
+            subsetSize += col < width - 1 ? cleanSet(row, col + 1) : 0;
         }
-        return total;
+
+        return subsetSize;
     }
 }

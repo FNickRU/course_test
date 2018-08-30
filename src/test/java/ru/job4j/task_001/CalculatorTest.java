@@ -62,7 +62,7 @@ public class CalculatorTest {
     }
 
     /**
-     * 1^1=1.
+     * 1 ^ 1 = 1.
      */
     @Test
     public void whenExpandOneOnOneThenResultOne() {
@@ -71,8 +71,11 @@ public class CalculatorTest {
         assertThat(calc.getResult(), is(1d));
     }
 
+    /**
+     * 2 ^ 2 = 4.
+     */
     @Test
-    public void whenExpandTwoOnTwoThenResultFour() throws Exception {
+    public void whenExpandTwoOnTwoThenResultFour() {
         Calculator calc = new Calculator();
         calc.expand(2d, 2d);
         assertThat(calc.getResult(), is(4d));

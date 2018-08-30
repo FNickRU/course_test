@@ -1,47 +1,76 @@
 package ru.job4j.task_017;
 
+import static java.lang.Integer.signum;
+import static java.util.Arrays.sort;
+import static java.util.Collections.singletonList;
+import static org.apache.commons.lang3.ArrayUtils.reverse;
 
-
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collections;
+import java.util.LinkedList;
 import java.util.List;
 
-
-
 /**
- * TODO: comment
+ * Класс машины для размена бумажной купюры на монеты.
  *
- * @author job4j
- * @since 28.07.2016
+ * @author fnickru
+ * @since 22.06.2018
  */
-public class CashMachine {
-
+public final class CashMachine {
+    /**
+     * Номиналы монет в разменной машине.
+     */
     private final int[] values;
 
+    /**
+     * Конструктор с параметром.
+     * @param values - номиналы монет, доступных в машине
+     */
     public CashMachine(final int[] values) {
         this.values = values;
+        sort(this.values);
+        reverse(this.values);
     }
 
-    public List<List<Integer>> exchange(int note) {
-        return this.exchange(note, 0);
+    /**
+     * Метод размена банкноты на монеты.
+     * @param note - номинал банкноты, которую нужно разменять
+     * @return все варианты размена банкноты
+     */
+    public List<List<Integer>> exchange(final int note) {
+        return exchange(note, 0);
     }
 
-    public List<List<Integer>> exchange(int note, int step) {
-        List<List<Integer>> data = new ArrayList<>();
-        for (int index = step; index != this.values.length; index++) {
-            final int value = this.values[index];
-            int rsl = note - this.values[index];
-            if (rsl == 0) {
-                data.add(new ArrayList<>(Collections.singletonList(value)));
-            } else {
-                for (List<Integer> sub : this.exchange(rsl, index)) {
-                    sub.add(value);
-                    data.add(sub);
-                }
+    /**
+     * Метод размена остатка банкноты на монеты, при ограничении в максимальный номинал монет.
+     * @param residue - остаток, который необходимо разменять
+     * @param maxCoinIdx - индекс монеты с максимальным номиналом
+     * @return все варинты размена остатка
+     */
+    public List<List<Integer>> exchange(final int residue,
+                                        final int maxCoinIdx) {
+        List<List<Integer>> variations = new LinkedList<>();
+
+        for (int idx = maxCoinIdx; idx < values.length; ++idx) {
+            int value = values[idx];
+            Integer change = residue - values[idx];
+            switch (signum(change.compareTo(0))) {
+                case -1:
+                    break;
+                case 0:
+                    variations.add(new LinkedList<>(singletonList(value)));
+                    break;
+                case 1:
+                    for (List<Integer> variation : exchange(change, idx)) {
+                        if (!variation.isEmpty()) {
+                            variation.add(0, value);
+                            variations.add(variation);
+                        }
+                    }
+                    break;
+                default:
+                    throw new IllegalStateException();
             }
         }
-        return data;
-    }
 
+        return variations;
+    }
 }

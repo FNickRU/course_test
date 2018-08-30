@@ -12,6 +12,9 @@ import org.junit.Test;
  * @since 28.07.2016
  */
 public class UniqueCharsTest {
+    /**
+     * В строке "1" один уникальный символ: "1".
+     */
     @Test
     public void whenOneCharThenOneUnique() {
         UniqueChars unique = new UniqueChars("1");
@@ -39,6 +42,9 @@ public class UniqueCharsTest {
         assertThat(result, is(3));
     }
 
+    /**
+     * В строке "1111" один уникальный символ: "1".
+     */
     @Test
     public void onlyDublicate() {
         UniqueChars unique = new UniqueChars("1111");

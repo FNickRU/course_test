@@ -1,52 +1,76 @@
 package ru.job4j.task_007;
 
-
-
-
+import ru.job4j.task_001.Calculator;
 
 /**
- * TODO: comment
+ * Класс - парсер математических выражений.
  *
- * @author job4j
- * @since 28.07.2016
+ * @author fnickru
+ * @since 14.06.2018
  */
-public class Expression {
+public final class Expression {
+    /**
+     * Размер допустимого выражения.
+     * Пример: 2+2 - допустимо, 2+2-3 - нет.
+     */
+    public static final int EXPRESSION_SIZE = 3;
 
+    /**
+     * Вычисляемое выражение.
+     */
     private final String expr;
+    /**
+     * Калькулятор, производящий вычисления.
+     */
+    private final Calculator calculator;
 
+    /**
+     * Конструктор с параметром.
+     * @param expr - вычисляемое выражение
+     */
     public Expression(final String expr) {
         this.expr = expr;
+        calculator = new Calculator();
     }
 
+    /**
+     * Метод, производящие разбор и вычисляющий выражение.
+     * @return результат выражения
+     */
     public double calc() {
-        final String[] values = this.expr.split("(\\+|-|/|\\*)");
-        if (values.length == 2) {
-            final int size =  values[0].length();
-            return this.calc(
-                    Double.valueOf(values[0]),
-                    Double.valueOf(values[1]),
-                    this.expr.substring(size, size + 1)
-            );
+        String[] values = expr.split("((?<=[+-/*])|(?=[+-/*]))");
+
+        if (values.length == EXPRESSION_SIZE) {
+            double first;
+            double second;
+
+            try {
+                first = Double.valueOf(values[0]);
+                second = Double.valueOf(values[2]);
+            } catch (NumberFormatException e) {
+                throw new IllegalStateException();
+            }
+
+            switch (values[1]) {
+                case "+":
+                    calculator.add(first, second);
+                    break;
+                case "-":
+                    calculator.subtract(first, second);
+                    break;
+                case "*":
+                    calculator.multiple(first, second);
+                    break;
+                case "/":
+                    calculator.divide(first, second);
+                    break;
+                default:
+                    throw new UnsupportedOperationException();
+            }
         } else {
             throw new IllegalStateException();
         }
-    }
 
-    public double calc(double first, double second, String op) {
-        final double result;
-        if ("+".equals(op)) {
-            result = first + second;
-        } else if ("-".equals(op)) {
-            result = first - second;
-        } else if ("/".equals(op)) {
-            result = first / second;
-        } else if ("*".equals(op)) {
-            result = first * second;
-        } else {
-            throw new UnsupportedOperationException(
-                    String.format("operation unsupported %s", op)
-            );
-        }
-        return result;
+        return calculator.getResult();
     }
 }

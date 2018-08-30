@@ -32,10 +32,10 @@ public class PoolTest {
     }
 
     /**
-     * [1, 1, 1]
-     * [1, 1, 1]
-     * [1, 1, 1]
-     * Наибольшее подмножество - весь массив.
+     * [1, 0, 0]
+     * [0, 1, 1]
+     * [0, 1, 1]
+     * Наибольшее подмножество - элементы [1, 1], [1, 2], [2, 1] и [2, 2].
      */
     @Test
     public void whenUnionInLastLineThenFour() {
@@ -50,6 +50,12 @@ public class PoolTest {
         assertThat(result, is(4));
     }
 
+    /**
+     * [1, 1, 1]
+     * [1, 1, 1]
+     * [1, 1, 1]
+     * Наибольшее подмножество - весь массив.
+     */
     @Test
     public void whenAllFieldUnionThenReturnTotalSize() {
         Pool pool = new Pool(

@@ -1,7 +1,6 @@
 package ru.job4j.task_017;
 
 import static java.util.Arrays.asList;
-import static java.util.Collections.list;
 import static java.util.Collections.singletonList;
 import static org.hamcrest.Matchers.is;
 import static org.junit.Assert.assertThat;
@@ -30,9 +29,9 @@ public class CashMachineTest {
 
     /**
      * Если в машине монеты [1, 5, 10],
-     * а на размен подается купюра [10],
+     * а на размен подается купюра [5],
      * то варианты размена:
-     * [10], [5, 5], [5, 1, 1, 1, 1, 1], [1, 1, 1, 1, 1, 1, 1, 1, 1, 1].
+     * [5], [1, 1, 1, 1, 1].
      */
     @Test
     public void five() {
@@ -40,12 +39,18 @@ public class CashMachineTest {
         List<List<Integer>> result = machine.exchange(5);
         assertThat(result, is(
                 asList(
-                        asList(1, 1, 1, 1, 1),
-                        asList(5)
+                        singletonList(5),
+                        asList(1, 1, 1, 1, 1)
                 )
         ));
     }
 
+    /**
+     * Если в машине монеты [10, 5, 1],
+     * а на размен подается купюра [10],
+     * то варианты размена:
+     * [10], [5, 5], [5, 1, 1, 1, 1, 1], [1, 1, 1, 1, 1, 1, 1, 1, 1, 1].
+     */
     @Test
     public void change() {
         CashMachine machine = new CashMachine(new int[] {10, 5, 1});
@@ -55,7 +60,7 @@ public class CashMachineTest {
                         asList(
                                 singletonList(10),
                                 asList(5, 5),
-                                asList(1, 1, 1, 1, 1, 5),
+                                asList(5, 1, 1, 1, 1, 1),
                                 asList(1, 1, 1, 1, 1, 1, 1, 1, 1, 1)
                         )
                 )

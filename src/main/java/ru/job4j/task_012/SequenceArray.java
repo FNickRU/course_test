@@ -1,34 +1,41 @@
 package ru.job4j.task_012;
 
-
-
-
-
 /**
- * TODO: comment
+ * Класс проверки массива из нулей и единиц на то, что в нем есть последовательность из 3-х и больше единиц.
  *
- * @author job4j
- * @since 28.07.2016
+ * @author fnickru
+ * @since 16.06.2018
  */
-public class SequenceArray {
-
+public final class SequenceArray {
+    /**
+     * Анализируемый массив.
+     */
     private final int[] values;
 
+    /**
+     * Конструктор с параметром.
+     * @param values - анализируемый массив из нулей и единиц.
+     */
     public SequenceArray(final int[] values) {
         this.values = values;
     }
 
+    /**
+     * Метод проверки массива на наличие в нем последовательности из 3-х и больше единиц.
+     * @return true - если такая последовательность в массиве есть, false - иначе.
+     */
     public boolean containsOneSequence() {
-        boolean result = false;
-        for (int index=0;index!=this.values.length;index++) {
-            if (index + 2 < this.values.length &&
-                    this.values[index] == 1 &&
-                    this.values[index + 1] == 1 &&
-                    this.values[index + 2] == 1) {
-                result = true;
+        boolean hasSequence = false;
+
+        for (int mid = 1; mid < values.length - 1; ++mid) {
+            if (values[mid - 1] == 1
+                    && values[mid] == 1
+                    && values[mid + 1] == 1) {
+                hasSequence = true;
                 break;
             }
         }
-        return result;
+
+        return hasSequence;
     }
 }

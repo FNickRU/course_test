@@ -1,6 +1,6 @@
 package ru.job4j.task_019;
 
-import ru.parsentev.task_002.Point;
+import ru.job4j.task_002.Point;
 
 import java.util.Arrays;
 import java.util.LinkedList;
@@ -76,10 +76,6 @@ public final class Maze {
 
                         Point node = new Point(x, y);
 
-                        /**
-                         * Поднимаем вершину в очереди, если она уже в ней.
-                         * Иначе - просто добавляем.
-                         */
                         queue.remove(node);
                         queue.add(node);
                     }

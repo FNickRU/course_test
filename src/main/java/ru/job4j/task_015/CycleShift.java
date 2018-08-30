@@ -1,31 +1,39 @@
 package ru.job4j.task_015;
 
-
-
-
+import org.apache.commons.lang3.ArrayUtils;
 
 /**
- * TODO: comment
+ * Класс, осуществляющий циклический сдвиг массива вправо.
  *
- * @author job4j
- * @since 28.07.2016
+ * @author fnickru
+ * @since 17.06.2018
  */
-public class CycleShift {
-
+public final class CycleShift {
+    /**
+     * Входной массив.
+     */
     private final int[] values;
 
+    /**
+     * Конструктор с параметром.
+     * @param values - сдвигаемый массив
+     */
     public CycleShift(final int[] values) {
         this.values = values;
     }
 
-    public int[] shift(int position) {
-        for (int shift=0;shift!=position;shift++) {
-            int temp = this.values[this.values.length - 1];
-            for (int index=0;index<this.values.length - 1;index++) {
-                this.values[this.values.length - index - 1] = this.values[this.values.length - index - 2];
-            }
-            this.values[0] = temp;
-        }
-        return this.values;
+    /**
+     * Метод для сдвига массива вправо на <b>position</b> элементов.
+     * @param position - количество элементов для сдвига вправо
+     * @return массив, со сдвинутыми значениями
+     */
+    public int[] shift(final int position) {
+        int[] result = values.clone();
+
+        ArrayUtils.reverse(result);
+        ArrayUtils.reverse(result, position, values.length);
+        ArrayUtils.reverse(result, 0, position);
+
+        return result;
     }
 }

@@ -4,7 +4,7 @@ import static org.hamcrest.Matchers.is;
 import static org.junit.Assert.assertThat;
 
 import org.junit.Test;
-import ru.parsentev.task_002.Point;
+import ru.job4j.task_002.Point;
 
 /**
  * Тест класса квадрата в декартовой системе координат.

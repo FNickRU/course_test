@@ -1,31 +1,34 @@
 package ru.job4j.task_013;
 
-
-
-
+import java.util.Arrays;
 
 /**
- * TODO: comment
+ * Класс проверки числового массива на однородность.
  *
- * @author job4j
- * @since 28.07.2016
+ * @author fnickru
+ * @since 17.06.2018
  */
-public class MonoArray {
-
+public final class MonoArray {
+    /**
+     * Анализируемый массив.
+     */
     private final int[] values;
 
+    /**
+     * Конструктор с параметром.
+     * @param values - анализируемый массив из нулей и единиц.
+     */
     public MonoArray(final int[] values) {
         this.values = values;
     }
 
+    /**
+     * Метод проверки массива на однородность.
+     * @return true - если все элемента массива одинаковые, false - иначе.
+     */
     public boolean exists() {
-        boolean result = true;
-        for (int index=0;index!=this.values.length;index++) {
-            if (index + 1 < this.values.length && this.values[index] != this.values[index + 1]) {
-                result = false;
-                break;
-            }
-        }
-        return result;
+        int min = Arrays.stream(values).reduce(Integer.MAX_VALUE, Integer::min);
+        int max = Arrays.stream(values).reduce(Integer.MIN_VALUE, Integer::max);
+        return min == max;
     }
 }
